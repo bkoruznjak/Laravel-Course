@@ -17,7 +17,8 @@ class SubscriberFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
         ];
     }
 }
