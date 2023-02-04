@@ -1,16 +1,13 @@
 <x-guest-layout>
     <div class="flex flex-col bg-indigo-900 w-full h-screen">
-        <nav class="flex flex-row">
+        <nav class="flex flex-row pt-5 justify-between container mx-auto text-indigo-200">
             <a href="/">
-                <div class="bg-gray-100 w-40 h-40">
-                    <x-application-logo>
+                <x-application-logo class="w-16 h-16 fill-current">
 
-                    </x-application-logo>
-                </div>
-
+                </x-application-logo>
             </a>
 
-            <div>
+            <div class="flex justify-end">
                 @auth
                     <a href="{{ route('dashboard') }}">Dashboard</a>
                 @else
