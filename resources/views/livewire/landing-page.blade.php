@@ -39,12 +39,12 @@
         </div>
 
     </div>
-    <template x-if="true">
         <div
             class="flex fixed top-0 bg-gray-900 bg-opacity-60 items-center w-full h-full"
             x-show="showSubscribe"
             x-on:click.self="showSubscribe = false"
             x-on:keydown.escape.window="showSubscribe = false"
+            x-cloak
         >
 
             <div class="m-auto bg-pink-400 shadow-2xl rounded-xl p-8">
@@ -81,14 +81,13 @@
             </div>
 
         </div>
-    </template>
 
-    <template x-if="true">
         <div
             class="flex fixed top-0 bg-gray-900 bg-opacity-60 items-center w-full h-full"
             x-show="showSuccess"
             x-on:click.self="showSuccess = false"
             x-on:keydown.escape.window="showSuccess = false"
+            x-cloak
         >
 
             <div class="m-auto bg-green-400 shadow-2xl rounded-xl p-8">
@@ -105,5 +104,4 @@
             </div>
 
         </div>
-    </template>
 </div>
