@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Subscriber;
 use Livewire\Component;
 
 class LandingPage extends Component
@@ -10,8 +11,12 @@ class LandingPage extends Component
     public $email;
     public function subscribe()
     {
+     $subscriber = Subscriber::create([
+         'email' => $this->email
+     ]);
 
-     \Log::debug("$this->email");
+     //laravel trick to reset the field to the original value
+     $this->reset('email');
     }
     public function render()
     {
