@@ -60,7 +60,11 @@
             </x-text-input>
 
             <span class="text-gray-100 text-xs">
-                We will send you a confirmation email.
+                {{
+                    $errors->has('email')
+                    ? $errors->first('email')
+                    : "We will send you a confirmation email."
+                }}
             </span>
 
             <button
