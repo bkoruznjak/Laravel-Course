@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout xmlns:x-on="http://www.w3.org/1999/xhtml">
     <div
         class="flex flex-col bg-indigo-900 w-full h-screen"
         x-data="{
@@ -40,7 +40,6 @@
             </div>
 
         </div>
-
 
         <div
             class="flex fixed top-0 bg-gray-900 bg-opacity-60 items-center w-full h-full"
