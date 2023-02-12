@@ -1,8 +1,8 @@
 <div xmlns:x-on="http://www.w3.org/1999/xhtml" xmlns:wire="http://www.w3.org/1999/xhtml"
      class="flex flex-col bg-indigo-900 w-full h-screen"
      x-data="{
-            showSubscribe: false,
-            showSuccess: false,
+            showSubscribe: @entangle('showSubscribe'),
+            showSuccess: @entangle('showSuccess'),
         }"
 >
     <nav class="flex flex-row pt-5 justify-between container mx-auto text-indigo-200">
@@ -39,7 +39,7 @@
         </div>
 
     </div>
-    <x-modal class="bg-pink-500" trigger="showSubscribe">
+    <x-modal class="bg-pink-600" trigger="showSubscribe">
         <p class="text-white text-5xl font-extrabold text-center">
             Let's do it
         </p>
@@ -76,7 +76,7 @@
 
     </x-modal>
 
-    <x-modal class="bg-green-500" trigger="showSuccess">
+    <x-modal class="bg-green-600" trigger="showSuccess">
 
         <p class="animate-pulse text-white text-9xl font-extrabold text-center">
             &check;
