@@ -39,7 +39,7 @@
         </div>
 
     </div>
-    <x-modal class="bg-pink-600" trigger="showSubscribe">
+    <x-modal class="!bg-pink-500" trigger="showSubscribe">
         <p class="text-white text-5xl font-extrabold text-center">
             Let's do it
         </p>
@@ -54,7 +54,7 @@
                 type="email"
                 name="email"
                 placeholder="Email address"
-                wire:model="email"
+                wire:model.defer="email"
             >
 
             </x-text-input>
@@ -67,16 +67,19 @@
                 }}
             </span>
 
-            <button
-                class="px-5 py-3 mt-5 w-80 bg-blue-500 justify-center"
-            >
-                Get In
+            <button class="flex px-5 py-3 mt-5 w-80 bg-blue-500 justify-center">
+                <span class="animate-spin" wire:loading wire:target="subscribe">
+                    &#9696;
+                </span>
+                <span wire:loading.remove wire:target="subscribe">
+                    Get In
+                </span>
             </button>
         </form>
 
     </x-modal>
 
-    <x-modal class="bg-green-600" trigger="showSuccess">
+    <x-modal class="!bg-green-600" trigger="showSuccess">
 
         <p class="animate-pulse text-white text-9xl font-extrabold text-center">
             &check;
