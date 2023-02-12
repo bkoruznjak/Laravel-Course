@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Subscriber;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 
 class LandingPage extends Component
@@ -19,9 +22,24 @@ class LandingPage extends Component
 
         $this->validate();
 
-        $subscriber = Subscriber::create([
-            'email' => $this->email
-        ]);
+        DB::transaction(function(){
+            $subscriber = Subscriber::create([
+                'email' => $this->email
+            ]);
+
+            $notification = new VerifyEmail();
+            $notification->createUrlUsing(function($notifiable){
+               return URL::temporarySignedRoute(
+                   'subscribers.verify',
+                   now()->addMinutes(30),
+                   [
+                       'subscriber' => $notifiable->getKey(),
+                   ]
+               );
+            });
+
+            $subscriber->notify($notification);
+        }, $deadlockRetries = 5);
 
         //laravel trick to reset the field to the original value
         $this->reset('email');

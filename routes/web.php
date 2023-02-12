@@ -28,4 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/subscribers/verify/{subscriber}', [\App\Http\Controllers\SubscriberController::class, 'verify'])
+    ->middleware('signed')
+    ->name('subscribers.verify');
+
+require __DIR__ . '/auth.php';
