@@ -46,7 +46,7 @@
 
         <!-- prevents the page to refresh -->
         <form
-            wire:submit.prevent="subscribe"
+            wire.submit:prevent="subscribe"
             class="flex flex-col items-center p-24"
         >
             <x-text-input
