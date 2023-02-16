@@ -17,8 +17,6 @@ class SubscriberController extends Controller
 
     public function all()
     {
-        return view(view:'subscribers.all')->with([
-            'subscribers' => Subscriber::all(), //collect() for empty list
-        ]);
+        return view(view:'subscribers.all');
     }
 }
