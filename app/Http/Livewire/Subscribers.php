@@ -9,6 +9,11 @@ use PhpParser\Node\Expr\Cast\Int_;
 class Subscribers extends Component
 {
     public $subscribers;
+    public $search = '';
+
+    protected $queryString = [
+      'search' => ['except' => '']
+    ];
 
     public function mount()
     {
@@ -22,7 +27,7 @@ class Subscribers extends Component
 
     public function render()
     {
-        $this->subscribers = Subscriber::all();
+        $this->subscribers = Subscriber::where('email','like',"%{$this->search}%")->get();
 
         return view('livewire.subscribers')->with([
             'subscribers' => $this->subscribers, //collect() for empty list
